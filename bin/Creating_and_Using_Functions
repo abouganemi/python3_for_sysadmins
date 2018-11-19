@@ -1,0 +1,16 @@
+#!/usr/bin/env python3.7
+
+def print_message():
+    # Variables
+    message = input("What is your message? ")
+    repeat = int(input("How many times do you want to repeate your message? "))
+
+    if repeat == 0:
+        repeat = 1
+
+    count = 1
+    while count <= repeat:
+        print(message)
+        count += 1
+
+print_message()

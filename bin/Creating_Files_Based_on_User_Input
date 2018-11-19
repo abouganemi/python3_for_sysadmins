@@ -1,0 +1,11 @@
+#!/usr/bin/env python3.7
+
+file_name = open('user_input.txt', 'w')
+
+user_input = "initialization"
+
+while user_input:
+    user_input = input()
+    file_name.write(f"{user_input}\n")
+
+file_name.close()
