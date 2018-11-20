@@ -1,0 +1,21 @@
+#!/usr/bin/env python3.7
+
+import argparse
+import subprocess
+import sys
+
+# Parse arguments
+parser = argparse.ArgumentParser(description='Check for port usage')
+parser.add_argument('--port','-p', help='port to check')
+args = parser.parse_args()
+port = "-i4TCP:" + sys.argv[2]
+
+lsof = subprocess.run(['lsof', '-n', port], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+if lsof.returncode == 1:
+    print("No service running in port: "+ sys.argv[2])
+else:
+    print(f"Service found in port {sys.argv[2]} with PID: {lsof.stdout.decode().split()[10]}")
+    print("Killing the service...")
+    kill = subprocess.run(['kill', '-3', lsof.stdout.decode().split()[10]])
+    #print(lsof.stdout.decode().split()[10])

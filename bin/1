@@ -1,0 +1,17 @@
+#!/usr/bin/env python3.7
+
+import argparse
+import subprocess
+import sys
+
+# Parse arguments
+parser = argparse.ArgumentParser(description='Check for port usage')
+parser.add_argument('--port','-p', help='port to check')
+args = parser.parse_args()
+port = "-i4TCP:" + sys.argv[2]
+print (port)
+
+#lsof = subprocess.run(['lsof', '-n', '-i4TCP:', "port"])
+
+#print(lsof)
+
